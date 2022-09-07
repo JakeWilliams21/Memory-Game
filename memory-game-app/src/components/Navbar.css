@@ -1,0 +1,18 @@
+.navbar-parent {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 5%;
+    background-color: #123370;
+    color: white;
+}
+
+.navbar-right {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+}
+
+.navbar-left {
+    display: flex;
+    flex-direction: column;
+}
