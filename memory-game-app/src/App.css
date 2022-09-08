@@ -6,7 +6,8 @@ body {
   display: flex;
   flex-direction: column;
   gap: 64px;
-
+  width: 100%;
+  justify-content: center;
 }
 
 .card-grid {
@@ -16,3 +17,9 @@ body {
   column-gap: 32px;
   row-gap: 32px;
 }
+
+.win {
+  text-align: center;
+}
+
+

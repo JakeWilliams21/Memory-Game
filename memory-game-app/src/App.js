@@ -83,7 +83,6 @@ function App() {
       newOrder[i] = newOrder[j];
       newOrder[j] = temp
     }
-      console.log(players, 'Current State');
     
   }
 
@@ -115,6 +114,7 @@ function App() {
         }
       }
 
+      shuffle()
       
   }
 
@@ -122,6 +122,8 @@ function App() {
     <div className="App">
       <Navbar score = {score} />
 
+      {score.current === 12 ? 
+      <h1 className = 'win'>WINNER</h1> :
       <div className = 'card-grid'>
         <Card key = {players[0].id} score = {score} click = {handleClick} player = {players[0]}/>
         <Card key = {players[1].id} score = {score} click = {handleClick} player = {players[1]} />
@@ -136,6 +138,8 @@ function App() {
         <Card key = {players[10].id} score = {score} click = {handleClick} player = {players[10]} />
         <Card key = {players[11].id} score = {score} click = {handleClick} player = {players[11]} />
       </div>
+      }
+      
       
     </div>
   );
