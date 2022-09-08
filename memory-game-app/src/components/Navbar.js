@@ -13,8 +13,8 @@ const Navbar = (props) => {
                 <p>Get points by clicking on an image, but don't click on any more than once!</p>
             </div>
             <div className = 'navbar-right'>
-                <h2>Score: {score}</h2>
-                <h2>Best Score: {best}</h2>
+                <h2>Score: {props.score.current}</h2>
+                <h2>Best Score: {props.score.best}</h2>
             </div>
         </div>
     )

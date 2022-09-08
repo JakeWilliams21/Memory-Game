@@ -52,45 +52,89 @@ function App() {
       id : 9
     },
     {
-      name: 'Donovan Mitchell',
-      url: 'https://fadeawayworld.net/.image/t_share/MTkyMDMyNTMwMDAwNTIwOTEw/mitchell.jpg',
+      name: 'Anthony Davis',
+      url: 'https://static01.nyt.com/images/2021/05/29/sports/29lakers1-print/29lakers-davis1-mediumSquareAt3X.jpg',
       id : 10
     },
     {
-      name: 'Donovan Mitchell',
-      url: 'https://fadeawayworld.net/.image/t_share/MTkyMDMyNTMwMDAwNTIwOTEw/mitchell.jpg',
+      name: 'Nikola Jokic',
+      url: 'https://cdn.vox-cdn.com/thumbor/ZKYc2RZzitzfgFKpLR7tnDAZea4=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/23051349/1236573315.jpg',
       id : 11
     },
     {
-      name: 'Donovan Mitchell',
-      url: 'https://fadeawayworld.net/.image/t_share/MTkyMDMyNTMwMDAwNTIwOTEw/mitchell.jpg',
+      name: 'Joel Embiid',
+      url: 'https://cdn.vox-cdn.com/thumbor/i-6FZ7ARzzr_2HmFyqA6-urnNJ8=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/14724969/usa_today_12181947.jpg',
       id : 12
     }
 
   ])
+  const [selection, setSelection] = useState([])
+  const [score, setScore] = useState({
+    current: 0,
+    best: 0
+  })
 
+  const shuffle = () => {
+    let newOrder = players
 
-  const handleShuffle = () => {
-    console.log('Shuffle!');
+    for (let i = newOrder.length - 1; i > 0; i--) {
+      let j = Math.floor(Math.random() * (i + 1))
+      let temp = newOrder[i]
+      newOrder[i] = newOrder[j];
+      newOrder[j] = temp
+    }
+      console.log(players, 'Current State');
+    
+  }
+
+  const handleClick = (id) => {
+      
+      
+      if(selection.includes(id)) {
+        setSelection(prevSelection => ([]))
+        setScore(prevBest => ({
+          ...prevBest,
+          current: 0
+        }))
+      } else {
+        setSelection(prevSelection => ([...prevSelection, id]))
+        setScore(prevBest => ({
+          ...prevBest,
+          current: score.current + 1
+        }))
+        if (score.current === score.best && score.current === 0) {
+          setScore(prevScore => ({
+            ...prevScore,
+            best: 1
+          }))
+        } else if (score.current >= score.best) {
+          setScore(prevScore => ({
+            ...prevScore,
+            best: score.best + 1
+          }))
+        }
+      }
+
+      
   }
 
   return (
     <div className="App">
-      <Navbar />
+      <Navbar score = {score} />
 
       <div className = 'card-grid'>
-        <Card player = {players[0]}/>
-        <Card player = {players[1]} />
-        <Card player = {players[2]} />
-        <Card player = {players[3]} />
-        <Card player = {players[4]} />
-        <Card player = {players[5]} />
-        <Card player = {players[6]} />
-        <Card player = {players[7]} />
-        <Card player = {players[8]} />
-        <Card player = {players[9]} />
-        <Card player = {players[10]} />
-        <Card player = {players[11]} />
+        <Card key = {players[0].id} score = {score} click = {handleClick} player = {players[0]}/>
+        <Card key = {players[1].id} score = {score} click = {handleClick} player = {players[1]} />
+        <Card key = {players[2].id} score = {score} click = {handleClick} player = {players[2]} />
+        <Card key = {players[3].id} score = {score} click = {handleClick} player = {players[3]} />
+        <Card key = {players[4].id} score = {score} click = {handleClick} player = {players[4]} />
+        <Card key = {players[5].id} score = {score} click = {handleClick} player = {players[5]} />
+        <Card key = {players[6].id} score = {score} click = {handleClick} player = {players[6]} />
+        <Card key = {players[7].id} score = {score} click = {handleClick} player = {players[7]} />
+        <Card key = {players[8].id} score = {score} click = {handleClick} player = {players[8]} />
+        <Card key = {players[9].id} score = {score} click = {handleClick} player = {players[9]} />
+        <Card key = {players[10].id} score = {score} click = {handleClick} player = {players[10]} />
+        <Card key = {players[11].id} score = {score} click = {handleClick} player = {players[11]} />
       </div>
       
     </div>
